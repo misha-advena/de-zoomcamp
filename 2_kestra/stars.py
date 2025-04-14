@@ -1,8 +1,11 @@
 import requests
+from kestra import Kestra
 
 r = requests.get("https://api.github.com/repos/kestra-io/kestra")
 gh_stars = r.json()['stargazers_count']
 print(f"Kestra has {gh_stars} stars on GitHub.")
+
+Kestra.outputs({'gh_stars':gh_stars})
 # The above code fetches the number of stars for the Kestra GitHub repository using the GitHub API.
 # It uses the requests library to make a GET request to the API endpoint for the repository.
 # The response is then parsed as JSON, and the number of stargazers (stars) is extracted and printed.
